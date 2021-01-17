@@ -5,6 +5,7 @@ conda_env: conda.yaml
 entry_points:
   main:
     parameters:
-      alpha: float
-      l1_ratio: {type: float, default: 0.1}
-    command: "python train.py {alpha} {l1_ratio}"
+      labels_array: {type: list, default: ['apple', 'bee']}
+      nb_epochs: {type: int, default: 4}
+      nb_patience: {type: int, default: 15}
+    command: "python train.py {labels_array} {nb_epochs} {nb_patience}"
