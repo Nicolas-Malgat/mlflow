@@ -39,6 +39,9 @@ class Loader:
             os.rmdir(self.zip_file)
             return
 
+        if self.extraction_target:
+            self._extract_data()
+
         print('Les fichiers sont correctement téléchargés')
 
     def __ask_download_zip():
@@ -89,9 +92,6 @@ class Loader:
                     sys.stdout.write("\r[%s%s]" % ('=' * done, ' ' * (50-done)) )    
                     sys.stdout.flush()
 
-        if self.extraction_target:
-            self._extract_data()
-
     def _extract_data(self):
         '''
         Extract the zip file to the hard disk
@@ -99,7 +99,7 @@ class Loader:
 
         print('Begin extracting data')
         with zipfile.ZipFile(self.zip_file, 'r') as zip_ref:
-            zip_ref.extractall(os.sep.join([ '..', '..', 'datas', 'RAW' ]))
+            zip_ref.extractall(self.extraction_target)
         print('Data extract successfully')
 
 if __name__ == "__main__":
