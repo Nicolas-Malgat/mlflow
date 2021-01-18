@@ -6,6 +6,6 @@ entry_points:
   main:
     parameters:
       labels_array: {type: list, default: ['apple', 'bee']}
-      nb_epochs: {type: int, default: 4}
-      nb_patience: {type: int, default: 15}
+      nb_epochs: {type: int, default: 15}
+      nb_patience: {type: int, default: 4}
     command: "python train.py {labels_array} {nb_epochs} {nb_patience}"
